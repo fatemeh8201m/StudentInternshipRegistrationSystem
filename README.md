@@ -1,6 +1,5 @@
-# StudentInternshipRegistrationSystem
-# StudentInternshipRegistrationSystem
-# name and student number =fatemehmolayi and 03121174705021
+StudentInternshipRegistrationSystem
+فاطمه مولایی 0312117475021
 # توضیح کلی پروژه سامانه ثبت کاراموزی دانشجویان
 این پروژه با هدف طراحی یک سامانه هوشمند ثبت کاراموزی دانشجویان طراحی میشود تا دانشجویان به راحتی و در کمترین زمان بتوانند اطلاعات محل کار و ساعات و گزارش هارا وارد کرده تا استاد راهنما تایید نهایی کند.
 # اهداف پروژه

@@ -1,36 +1,34 @@
+flowchart LR
 
-%% Use Case Diagram for Internship Registration System
-%% Mermaid UML syntax
+%% ================= Actors =================
+student(["👤 دانشجو"])
+advisor(["👤 استاد راهنما"])
+industry(["👤 مسئول واحد صنعتی"])
+admin(["👤 مدیر سامانه"])
 
-flowchart TD
+%% ============== System Boundary ==============
+subgraph System["سامانه ثبت کارآموزی دانشجویان"]
+    UC_Register("⭑ ثبت‌نام کارآموزی")
+    UC_UploadDocs("⭑ بارگذاری مدارک")
+    UC_TrackStatus("⭑ پیگیری وضعیت درخواست")
+    UC_AdvisorApprove("⭑ تایید استاد راهنما")
+    UC_IndustryApprove("⭑ تایید محل کارآموزی")
+    UC_AdminManageUsers("⭑ مدیریت کاربران")
+    UC_AdminManageInterns("⭑ مدیریت درخواست‌های کارآموزی")
+end
 
-    %% Actors
-    student([دانشجو])
-    advisor([استاد راهنما])
-    industry([مسئول صنایع])
-    admin([مدیر سامانه])
+%% =============== Associations ===============
+student --- UC_Register
+student --- UC_UploadDocs
+student --- UC_TrackStatus
 
-    %% System Boundary
-    subgraph System[سامانه ثبت کارآموزی]
-        UC_Register((ثبت‌نام کارآموزی))
-        UC_UploadDocs((بارگذاری مدارک))
-        UC_ViewStatus((مشاهده وضعیت))
-        UC_ApproveAdvisor((تایید استاد راهنما))
-        UC_ApproveIndustry((تایید محل کارآموزی))
-        UC_ManageUsers((مدیریت کاربران))
-        UC_ManageInternships((مدیریت کارآموزی‌ها))
-    end
+advisor --- UC_AdvisorApprove
+industry --- UC_IndustryApprove
 
-    %% Relations
-    student --> UC_Register
-    student --> UC_UploadDocs
-    student --> UC_ViewStatus
+admin --- UC_AdminManageUsers
+admin --- UC_AdminManageInterns
 
-    advisor --> UC_ApproveAdvisor
-    industry --> UC_ApproveIndustry
 
-    admin --> UC_ManageUsers
-    admin --> UC_ManageInternships
 
     class K company;
     class M teacher

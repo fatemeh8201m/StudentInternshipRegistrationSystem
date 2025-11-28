@@ -25,5 +25,39 @@ graph TD
 
     class A student;
     class G manager;
+
+%% Use Case Diagram for Internship Registration System
+%% Mermaid UML syntax
+
+flowchart TD
+
+    %% Actors
+    student([دانشجو])
+    advisor([استاد راهنما])
+    industry([مسئول صنایع])
+    admin([مدیر سامانه])
+
+    %% System Boundary
+    subgraph System[سامانه ثبت کارآموزی]
+        UC_Register((ثبت‌نام کارآموزی))
+        UC_UploadDocs((بارگذاری مدارک))
+        UC_ViewStatus((مشاهده وضعیت))
+        UC_ApproveAdvisor((تایید استاد راهنما))
+        UC_ApproveIndustry((تایید محل کارآموزی))
+        UC_ManageUsers((مدیریت کاربران))
+        UC_ManageInternships((مدیریت کارآموزی‌ها))
+    end
+
+    %% Relations
+    student --> UC_Register
+    student --> UC_UploadDocs
+    student --> UC_ViewStatus
+
+    advisor --> UC_ApproveAdvisor
+    industry --> UC_ApproveIndustry
+
+    admin --> UC_ManageUsers
+    admin --> UC_ManageInternships
+
     class K company;
     class M teacher

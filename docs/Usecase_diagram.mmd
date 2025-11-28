@@ -1,30 +1,3 @@
-%%{init: {'theme': 'default'}}%%
-graph TD
-    A[user] -->|ثبت‌نام| B(فرم ثبت‌نام)
-    A -->|جستجوی شرکت| C(لیست شرکت‌ها)
-    A -->|ارسال درخواست| D(درخواست کارآموزی)
-    A -->|بررسی وضعیت| E(وضعیت درخواست)
-    A -->|ثبت‌نام در دوره| F(دوره کارآموزی)
-
-    G[مدیر] -->|بررسی درخواست‌ها| D
-    G -->|تایید درخواست| H(تایید کارآموزی)
-    G -->|مدیریت شرکت‌ها| I(مدیریت اطلاعات شرکت‌ها)
-    G -->|گزارش‌گیری| J(گزارش کارآموزی)
-
-    K[شرکت] -->|دریافت درخواست| D
-    K -->|تایید کارآموز| H
-    K -->|ارزیابی کارآموز| L(ارزیابی عملکرد)
-
-    M[اساتید] -->|بررسی عملکرد| L
-    M -->|تعیین نمره| N(نمره کارآموزی)
-
-    classDef student fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef manager fill:#bbf,stroke:#333,stroke-width:2px;
-    classDef company fill:#fbf,stroke:#333,stroke-width:2px;
-    classDef teacher fill:#ffb,stroke:#333,stroke-width:2px;
-
-    class A student;
-    class G manager;
 
 %% Use Case Diagram for Internship Registration System
 %% Mermaid UML syntax

@@ -12,6 +12,7 @@ subgraph System["سامانه ثبت کارآموزی دانشجویان"]
     UC_UploadDocs("⭑ بارگذاری مدارک")
     UC_TrackStatus("⭑ پیگیری وضعیت درخواست")
     UC_AdvisorApprove("⭑ تایید استاد راهنما")
+    UC_AdvisorReject("⭑ رد درخواست توسط استاد راهنما")
     UC_IndustryApprove("⭑ تایید محل کارآموزی")
     UC_AdminManageUsers("⭑ مدیریت کاربران")
     UC_AdminManageInterns("⭑ مدیریت درخواست‌های کارآموزی")
@@ -23,12 +24,12 @@ student --- UC_UploadDocs
 student --- UC_TrackStatus
 
 advisor --- UC_AdvisorApprove
+advisor --- UC_AdvisorReject
+
 industry --- UC_IndustryApprove
 
 admin --- UC_AdminManageUsers
 admin --- UC_AdminManageInterns
 
-
-
-    class K company;
-    class M teacher
+class K company;
+class M teacher

@@ -14,6 +14,7 @@ subgraph System["سامانه ثبت کارآموزی دانشجویان"]
     UC_AdvisorApprove("⭑ تایید استاد راهنما")
     UC_AdvisorReject("⭑ رد درخواست توسط استاد راهنما")
     UC_IndustryApprove("⭑ تایید محل کارآموزی")
+    UC_IndustryReject("⭑ رد محل کارآموزی توسط واحد صنعتی")
     UC_AdminManageUsers("⭑ مدیریت کاربران")
     UC_AdminManageInterns("⭑ مدیریت درخواست‌های کارآموزی")
 end
@@ -27,6 +28,7 @@ advisor --- UC_AdvisorApprove
 advisor --- UC_AdvisorReject
 
 industry --- UC_IndustryApprove
+industry --- UC_IndustryReject
 
 admin --- UC_AdminManageUsers
 admin --- UC_AdminManageInterns

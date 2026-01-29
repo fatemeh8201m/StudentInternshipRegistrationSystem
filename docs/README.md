@@ -8,3 +8,9 @@
 | 6     | Sequence Diagrams                | نمودار توالی فرایند ثبت کارآموزی         | `sequence_diagrams.md`         |
 | 7     | UI Mockups                       | پیش‌طرح رابط کاربری سامانه               | `ui_mockups.md`                |
 | 8     | API Documentation                | تعریف APIهای سامانه (در صورت نیاز)       | `api_docs.md`                  |
+
+
+   ## Activity Diagram
+```mermaid
+   (کد بالا را می‌تونی هم داخل README کپی کنی تا مستقیماً در GitHub نمایش داده شود)
+   

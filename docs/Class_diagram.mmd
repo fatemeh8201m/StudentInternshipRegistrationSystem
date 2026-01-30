@@ -1,58 +1,58 @@
 classDiagram
     direction LR
 
-    class دانشجو {
-        -شماره_دانشجویی: String
-        -نام: String
-        -رشته: String
-        -ایمیل: String
-        +ارسال_درخواست(شرکت, استاد): درخواست_کارآموزی
-        +مشاهده_وضعیت(): String
+    class Daneshjoo {
+        +studentID: String
+        +name: String
+        +major: String
+        +email: String
+        +submitRequest(company: Sherkat, supervisor: OstadRahnama)
+        +viewRequests()
     }
 
-    class استاد_راهنما {
-        -کد_استاد: String
-        -نام: String
-        -تخصص: String
-        +بررسی_درخواست(درخواست): Boolean
-        +ارائه_بازخورد(گزارش): Void
+    class OstadRahnama {
+        +supervisorID: String
+        +name: String
+        +specialty: String
+        +reviewRequest(request: DarkhastKaramozi)
+        +approveOrReject(requestID: int, decision: bool)
     }
 
-    class مدیر_آموزش {
-        -کد_کاربری: String
-        -نام: String
-        +تایید_نهایی(درخواست): Boolean
-        +مدیریت_کاربران(): Void
+    class ModirAmuzesh {
+        +adminID: String
+        +name: String
+        +accessLevel: String
+        +finalApproval(request: DarkhastKaramozi)
     }
 
-    class شرکت {
-        -کد_شرکت: String
-        -نام_شرکت: String
-        -آدرس: String
-        -شماره_تماس: String
-        -تعداد_ظرفیت: Int
-        +ثبت_فرصت_کارآموزی(): Void
-        +دریافت_درخواست‌ها(): List<درخواست_کارآموزی>
+    class Sherkat {
+        +companyID: String
+        +name: String
+        +address: String
+        +capacity: int
+        +registerInternshipOpportunity()
+        +receiveRequest(request: DarkhastKaramozi)
     }
 
-    class درخواست_کارآموزی {
-        -شناسه_درخواست: Int
-        -تاریخ_ارسال: Date
-        -نوع_کارآموزی: String
-        -وضعیت: Enum
-        +مشاهده_جزئیات(): String
+    class DarkhastKaramozi {
+        +requestID: int
+        +submissionDate: Date
+        +internshipType: String
+        +status: String
+        +hoursRequired: int
+        +getDetails()
     }
 
-    class گزارش_نهایی {
-        -شناسه_گزارش: Int
-        -تاریخ_ارسال: Date
-        -نمره: Float
-        -نظر_استاد: String
-        +ارسال_گزارش(): Boolean
+    class GozareshNahaei {
+        +reportID: int
+        +uploadDate: Date
+        +supervisorGrade: float
+        +finalGrade: float
+        +uploadReport()
     }
 
-    دانشجو "1" -- "0..*" درخواست_کارآموزی : ثبت می‌کند
-    استاد_راهنما "1" -- "0..*" درخواست_کارآموزی : بررسی می‌کند
-    مدیر_آموزش "1" -- "0..*" درخواست_کارآموزی : تایید می‌کند
-    شرکت "1" -- "0..*" درخواست_کارآموزی : مرتبط است با
-    درخواست_کارآموزی "1" -- "0..1" گزارش_نهایی : منجر به
+    Daneshjoo "1" --> "0..*" DarkhastKaramozi : submits
+    OstadRahnama "1" --> "0..*" DarkhastKaramozi : reviews
+    ModirAmuzesh "1" --> "0..*" DarkhastKaramozi : approves
+    Sherkat "1" --> "0..*" DarkhastKaramozi : relatedTo
+    DarkhastKaramozi "1" --> "0..1" GozareshNahaei : resultsIn

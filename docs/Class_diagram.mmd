@@ -2,57 +2,60 @@ classDiagram
     direction LR
 
     class Daneshjoo {
-        +studentID: String
-        +name: String
-        +major: String
-        +email: String
-        +submitRequest(company: Sherkat, supervisor: OstadRahnama)
-        +viewRequests()
+        +studentID
+        +name
+        +major
+        +email
+        +submitRequest()
+        +viewStatus()
     }
 
     class OstadRahnama {
-        +supervisorID: String
-        +name: String
-        +specialty: String
-        +reviewRequest(request: DarkhastKaramozi)
-        +approveOrReject(requestID: int, decision: bool)
+        +supervisorID
+        +name
+        +department
+        +reviewRequest()
+        +gradeReport()
     }
 
     class ModirAmuzesh {
-        +adminID: String
-        +name: String
-        +accessLevel: String
-        +finalApproval(request: DarkhastKaramozi)
+        +adminID
+        +name
+        +accessLevel
+        +finalApprove()
+        +manageUsers()
     }
 
     class Sherkat {
-        +companyID: String
-        +name: String
-        +address: String
-        +capacity: int
-        +registerInternshipOpportunity()
-        +receiveRequest(request: DarkhastKaramozi)
+        +companyID
+        +name
+        +address
+        +contactPerson
+        +availableSlots
+        +sendOffer()
+        +receiveRequests()
     }
 
     class DarkhastKaramozi {
-        +requestID: int
-        +submissionDate: Date
-        +internshipType: String
-        +status: String
-        +hoursRequired: int
+        +requestID
+        +submissionDate
+        +durationWeeks
+        +hoursRequired
+        +status
         +getDetails()
     }
 
     class GozareshNahaei {
-        +reportID: int
-        +uploadDate: Date
-        +supervisorGrade: float
-        +finalGrade: float
-        +uploadReport()
+        +reportID
+        +uploadDate
+        +fileURL
+        +supervisorGrade
+        +finalGrade
+        +uploadFile()
     }
 
-    Daneshjoo "1" --> "0..*" DarkhastKaramozi : submits
-    OstadRahnama "1" --> "0..*" DarkhastKaramozi : reviews
-    ModirAmuzesh "1" --> "0..*" DarkhastKaramozi : approves
-    Sherkat "1" --> "0..*" DarkhastKaramozi : relatedTo
-    DarkhastKaramozi "1" --> "0..1" GozareshNahaei : resultsIn
+    Daneshjoo --> DarkhastKaramozi : submits
+    OstadRahnama --> DarkhastKaramozi : reviews
+    ModirAmuzesh --> DarkhastKaramozi : approves
+    Sherkat --> DarkhastKaramozi : relatedTo
+    DarkhastKaramozi --> GozareshNahaei : resultsIn

@@ -1,51 +1,49 @@
-%% نمودار فعالیت (Activity Diagram) برای سامانه ثبت کارآموزی دانشجویان
-activityDiagram
-    title: جریان اصلی ثبت و ارزیابی کارآموزی
+classDiagram
+direction LR
 
-    start
+class Daneshjoo {
+  studentID
+  name
+  major
+  email
+}
 
-    partition دانشجو {
-        :ورود به سامانه و تکمیل فرم درخواست کارآموزی;
-        --> ثبت درخواست;
-    }
+class OstadRahnama {
+  supervisorID
+  name
+  specialty
+}
 
-    partition سیستم مرکزی {
-        :بررسی اولیه مدارک و تطابق با مقررات;
-        if (مدارک کامل و صحیح است؟) then (بله)
-            --> ارسال جهت بررسی استاد راهنما;
-        else (خیر)
-            --> بازگشت به دانشجو جهت اصلاح;
-            -->> دانشجو: تکمیل مجدد فرم;
-        endif
-    }
+class ModirAmuzesh {
+  adminID
+  name
+  accessLevel
+}
 
-    partition استاد راهنما {
-        :دریافت و بررسی درخواست و معرفی‌نامه;
-        if (تأیید نهایی استاد؟) then (بله)
-            --> صدور نامه معرفی رسمی به کارفرما;
-        else (خیر)
-            --> اطلاع‌رسانی عدم تأیید به دانشجو;
-            stop
-        endif
-    }
+class Sherkat {
+  companyID
+  name
+  address
+  capacity
+}
 
-    partition دانشجو {
-        :دریافت نامه و ارائه به کارفرما;
-        --> کارفرما: دریافت و تأیید پذیرش;
-    }
+class DarkhastKaramozi {
+  requestID
+  submissionDate
+  internshipType
+  status
+  hoursRequired
+}
 
-    partition دانشجو {
-        :انجام دوره کارآموزی و ثبت هفتگی پیشرفت;
-        --> ارزیابی نهایی توسط استاد;
-    }
+class GozareshNahaei {
+  reportID
+  uploadDate
+  supervisorGrade
+  finalGrade
+}
 
-    partition استاد راهنما {
-        :دریافت گزارشات نهایی و ارزیابی عملکرد کارفرما;
-        --> ثبت نمره نهایی در سامانه;
-    }
-
-    partition سیستم مرکزی {
-        :نهایی‌سازی سوابق و محاسبه واحدها;
-        --> end
-    }
-
+Daneshjoo --> DarkhastKaramozi : submits
+OstadRahnama --> DarkhastKaramozi : reviews
+ModirAmuzesh --> DarkhastKaramozi : approves
+Sherkat --> DarkhastKaramozi : includes
+DarkhastKaramozi --> GozareshNahaei : resultsIn
